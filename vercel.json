@@ -4,6 +4,6 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "rewrites": [
-    { "source": "/", "destination": "/Cofen Ramal/Ramais.html" }
+    { "source": "/", "destination": "/Cofen%20Ramal/Ramais.html" }
   ]
 }
