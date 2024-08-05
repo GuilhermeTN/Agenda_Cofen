@@ -3,7 +3,7 @@
   "public": true,
   "cleanUrls": true,
   "trailingSlash": true,
-  "routes": [
-    { "src": "/", "dest": "/Cofen Ramal/Ramais.html" }
+  "rewrites": [
+    { "source": "/", "destination": "/Cofen Ramal/Ramais.html" }
   ]
 }
