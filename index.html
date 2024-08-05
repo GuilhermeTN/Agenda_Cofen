@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista Telefônica COFEN</title>
+  <link rel="stylesheet" href="adminStyle.css" />
+  <link rel="icon" href="phone.png" sizes="16x16 32x32" type="image/png" />
+  <link rel="stylesheet" href="../fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <script src="script.js" defer></script>
+  <section>
+    <header>
+      <img src="Cofen.png" alt="" onclick="redirecionar()" style="cursor: pointer; height:30vh;">
+    </header>
+
+
+    <div class="form-container">
+      <form id="formulario" method="post">
+        <h1>Cadastramento de Ramal</h1>
+        <label for="departamento"><b>Departamento:</b></label>
+        <input type="text" id="departamento" name="departamento" required>
+
+        <label for="andar"><b>Andar:</b></label>
+        <input type="text" id="andar" name="andar" required>
+
+        <label for="pessoas"><b>Nome:</b></label>
+        <input type="text" id="pessoas" name="pessoas" required>
+
+        <label for="ramal"><b>Ramal:</b></label>
+        <input type="text" id="ramal" name="ramal" required>
+
+        <button id="adicionarContato" type="submit" type="reset" onclick="showNotification()">Adicionar Contato</button>
+        <button id="salvarEdicao" type="button" onclick="salvarEdicao()" style="display: none;" >Salvar Edição</button>
+        <button type="reset">Limpar Campos</button>
+      </form>
+    </div>
+
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr class="fixo">
+            <th class="coz" onclick="ordenarTabela(0)" style="cursor: pointer;"><b>Setor</b><i class="fa-solid fa-chevron-down setor"></i></th>
+            <th class="coz" onclick="ordenarTabela(1)" style="cursor: pointer;"><b>Andar</b><i class="fa-solid fa-chevron-down andar"></i></th>
+            <th class="coz" onclick="ordenarTabela(2)" style="cursor: pointer;"><b>Nome</b><i class="fa-solid fa-chevron-down nome"></i></th>
+            <th class="coz"><b>Ramal</b></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <div class="tbl-content">
+      <input type="text" id="meuInput" placeholder="Buscar por nome">
+
+      <select id="selecionarSetor" onchange="filtrarPorSetor()">
+        <option value="">Filtrar Por Setor</option>
+        <option value="DGEP">DGEP</option>
+        <option value="DIV DO EXERCÍCIO PROFISSIONAL">DIV DO EXERCÍCIO PROFISSIONAL</option>
+        <option value="CGC / COMITÊ">CGC / COMITÊ</option>
+        <option value="PROCESSO ÉTICO">PROCESSO ÉTICO</option>
+        <option value="EXPEDIÇÃO">EXPEDIÇÃO</option>
+        <option value="ASSESORIA DE PLANEJAMENTO">ASSESORIA DE PLANEJAMENTO</option>
+        <option value="DEP. DE EDUCAÇÃO CORPORATIVA">DEP. DE EDUCAÇÃO CORPORATIVA</option>
+        <option value="PASSAGENS">PASSAGENS</option>
+        <option value="PATRIMÔNIO">PATRIMÔNIO</option>
+        <option value="COPA">COPA</option>
+        <option value="AUDITORIA">AUDITORIA</option>
+        <option value="CONTABILIDADE E TRIBUTOS">CONTABILIDADE E TRIBUTOS </option>
+        <option value="CONTROLE INTERNO">CONTROLE INTERNO</option>
+        <option value="CONTROLADORIA">CONTROLADORIA</option>
+        <option value="ALMOXARIFADO">ALMOXARIFADO</option>
+        <option value="CORREGEDORIA">CORREGEDORIA</option>
+        <option value="DRC">DRC</option>
+        <option value="DTIC">DTIC</option>
+        <option value="DTIC/GOVERNANÇA">DTIC/GOVERNANÇA</option>
+        <option value="DTIC/SUPORTE">DTIC/SUPORTE</option>
+        <option value="DTIC/INFRA">DTIC/INFRA</option>
+        <option value="DTIC/SISTEMAS">DTIC/SISTEMAS</option>
+        <option value="ORÇAMENTO E EMPENHO">ORÇAMENTO E EMPENHO</option>
+        <option value="OUVIDORIA">OUVIDORIA</option>
+        <option value="TELEFONIA">TELEFONIA</option>
+        <option value="CDM">CDM</option>
+        <option value="RECEPÇÃO">RECEPÇÃO</option>
+        <option value="ARQUIVO GERAL E PROTOCOLO">ARQUIVO GERAL E PROTOCOLO</option>
+        <option value="DEP. TÉCNICO DE CONTRATAÇÕES">DEP. TÉCNICO DE CONTRATAÇÕES</option>
+        <option value="COMPRAS E CONTRATAÇÕES">COMPRAS E CONTRATAÇÕES</option>
+        <option value="CONTRATOS">CONTRATOS</option>
+        <option value="ADMINISTRATIVO">ADMINISTRATIVO</option>
+        <option value="ASCOM">ASCOM</option>
+        <option value="CPL">CPL</option>
+        <option value="DGP">DGP</option>
+        <option value="BENEFÍCIOS/RH">DGP/BENEFÍCIOS/RH</option>
+        <option value="PAGAMENTO">PAGAMENTO</option>
+        <option value="DLC">DLC</option>
+        <option value="SERVIÇOS GERAIS">SERVIÇOS GERAIS</option>
+        <option value="MAT. E SERVIÇOS">MAT. E SERVIÇOS</option>
+        <option value="COOPERAÇÕES E PARCERIAS">COOPERAÇÕES E PARCERIAS </option>
+        <option value="CONVÊNIOS">CONVÊNIOS</option>
+        <option value="ASS. EVENTOS">ASS. EVENTOS</option>
+        <option value="ASSES. PLENÁRIO">ASSES. PLENÁRIO</option>
+        <option value="ASSES. LEGISLATIVA">ASSES. LEGISLATIVA</option>
+        <option value="ASSESS. GABINETE PRESIDÊNCIA">ASSESS. GABINETE PRESIDÊNCIA</option>
+        <option value="ASSES. RELAÇÕES INSTUCIONAIS">ASSES. RELAÇÕES INSTUCIONAIS</option>
+        <option value="ASSES. SECRETÁRIOS DA DIRETORIA">ASSES. SECRETÁRIOS DA DIRETORIA </option>
+        <option value="DPAC">DPAC</option>
+        <option value="PROGER">PROGER</option>
+        <option value="RECEPÇÃO 2º">RECEPÇÃO 2º</option>
+        <option value="SECRETARIA GERAL">SECRETARIA GERAL</option>
+        <option value="SECRETÁRIA PRESIDENCIA">SECRETÁRIA PRESIDENCIA</option>
+        <option value="DIÁRIAS E JETONS">DIÁRIAS E JETONS</option>
+        <option value="FINANCEIRO">FINANCEIRO</option>
+        <option value="TESOURARIA">TESOURARIA</option>
+        <option value="REVISTA">REVISTA</option>
+        <option value="BRIGADISTA">BRIGADISTA</option>
+        <option value="ENCARREGADO K2">ENCARREGADO K2 </option>
+        <option value="BIBLIOTECA">BIBLIOTECA</option>
+        <option value="CIPAA">CIPAA</option>
+      </select>
+
+
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody id="minhaTabela">
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="Cop">
+    Feito Por
+    <i>&copy;</i>
+    SIT COFEN - DF 2024
+  </div>
+
+  <div id="notification" class="notification">
+    Contato adicionado com sucesso!
+  </div>
+  <div id="notification2" class="notification2">
+    Contato removido com sucesso!
+  </div>
+
+</body>
+</html>
