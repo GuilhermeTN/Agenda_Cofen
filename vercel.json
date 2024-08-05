@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "routes": [
-    { "src": "/", "dest": "/Cofen Ramal/Ramais.html" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
