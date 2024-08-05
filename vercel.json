@@ -1,9 +1,7 @@
 {
   "version": 2,
   "public": true,
-  "cleanUrls": true,
-  "trailingSlash": true,
   "rewrites": [
-    { "source": "/", "destination": "/Cofen%20Ramal/Ramais.html" }
+    { "source": "/", "destination": "/Cofen Ramal/Ramais.html" }
   ]
 }
